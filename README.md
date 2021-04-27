@@ -1,5 +1,3 @@
-# ekf-template
-
 ## Build Setup
 
 ```bash
