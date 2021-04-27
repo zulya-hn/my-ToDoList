@@ -1,0 +1,89 @@
+@import '~bootstrap/scss/type';
+
+.font-family-alternate {
+  font-family: $font-family-alternate;
+}
+.font-family-base {
+  font-family: $font-family-base;
+}
+
+.font-size-0 {
+  font-size: $font-size-0 !important;
+}
+.font-size-1 {
+  font-size: $font-size-1 !important;
+}
+.font-size-2 {
+  font-size: $font-size-2 !important;
+}
+.font-size-3 {
+  font-size: $font-size-3 !important;
+}
+.font-size-4 {
+  font-size: $font-size-4 !important;
+}
+.font-size-5 {
+  font-size: $font-size-5 !important;
+}
+.font-size-6 {
+  font-size: $font-size-6 !important;
+}
+
+@each $breakpoint, $width in $grid-breakpoints {
+  @include media-breakpoint-up($breakpoint) {
+    .font-size-#{$breakpoint}-0 {
+      font-size: $font-size-0 !important;
+    }
+    .font-size-#{$breakpoint}-1 {
+      font-size: $font-size-1 !important;
+    }
+    .font-size-#{$breakpoint}-2 {
+      font-size: $font-size-2 !important;
+    }
+    .font-size-#{$breakpoint}-3 {
+      font-size: $font-size-3 !important;
+    }
+    .font-size-#{$breakpoint}-4 {
+      font-size: $font-size-4 !important;
+    }
+    .font-size-#{$breakpoint}-5 {
+      font-size: $font-size-5 !important;
+    }
+    .font-size-#{$breakpoint}-6 {
+      font-size: $font-size-6 !important;
+    }
+  }
+}
+
+.font-weight-medium {
+  font-weight: $font-weight-medium !important;
+}
+
+.lh-100 {
+  line-height: 1 !important;
+}
+.lh-120 {
+  line-height: 1.2 !important;
+}
+.lh-140 {
+  line-height: 1.4 !important;
+}
+.lh-150 {
+  line-height: 1.5 !important;
+}
+.lh-200 {
+  line-height: 2 !important;
+}
+.lh-reset {
+  line-height: unset !important;
+}
+
+.text-underline {
+  text-decoration: underline !important;
+}
+
+a {
+  &:link {
+    transition: color 0.15s ease-in-out;
+  }
+}

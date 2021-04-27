@@ -1,0 +1,54 @@
+/* Fonts */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
+
+/* Custom variables */
+
+@import 'variables';
+
+/* Bootstrap base */
+// Эти вещи используем глобально, не меняем и импортируем напрямую из Бутстрапа.
+
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/root';
+@import '~bootstrap/scss/reboot';
+@import '~bootstrap/scss/images';
+
+/* Bootstrap customization */
+// Эти вещи также используем глобально, но настраиваем под себя.
+// Импорты исходных компонентов Бутстрапа - внутри каждого файла.
+
+@import 'grid';
+@import 'type';
+@import 'buttons';
+@import 'forms';
+@import 'card';
+@import 'dropdown';
+
+/* Custom styles */
+// Дополнительные глобальные стили и утилиты.
+
+@import 'svg';
+@import 'utilities';
+@import 'transitions';
+
+// Фикс для модальных окон.
+
+body {
+  &.body-fixed {
+    @include media-breakpoint-down(md) {
+      overflow-y: scroll;
+
+      & > * {
+        max-height: 100vh;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+/* Bootstrap-Vue */
+
+@import '~bootstrap-vue/src/index.scss';

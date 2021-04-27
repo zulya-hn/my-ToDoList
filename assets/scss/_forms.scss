@@ -1,0 +1,9 @@
+@import '~bootstrap/scss/forms';
+@import '~bootstrap/scss/custom-forms';
+
+.form-control:invalid,
+.form-control.is-invalid,
+.form-control:valid,
+.form-control.is-valid {
+  background-size: auto;
+}

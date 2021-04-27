@@ -1,0 +1,289 @@
+// Color system
+
+$white: #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black: #000;
+
+$primary: #da1f24;
+$primary-light: #fa2c32;
+$primary-light-2: #fceded;
+$primary-dark: #ba1f24;
+$secondary: #455b71;
+$light: $gray-100;
+$dark: $gray-800;
+
+$red: #d00;
+$orange: #ff7100;
+$yellow: #fe0;
+$green: #21b219;
+$blue: #3ab8e0;
+
+$danger: $red;
+$warning: $orange;
+$success: $green;
+$info: $blue;
+
+$theme-colors: (
+  'white': $white,
+  'black': $black,
+  'primary': $primary,
+  'primary-light': $primary-light,
+  'secondary': $secondary,
+  'light': $light,
+  'dark': $dark,
+  'red': $red,
+  'orange': $orange,
+  'yellow': $yellow,
+  'green': $green,
+  'blue': $blue
+);
+
+$yiq-text-dark: $gray-900;
+$yiq-text-light: $white;
+$yiq-contrasted-threshold: 150;
+
+// Options
+
+/* $enable-validation-icons: false; */
+$enable-rounded: false;
+$transition-base: all 0.15s ease-out;
+$body-bg: $white;
+$body-color: $gray-900;
+$rounded-pill: 99rem;
+
+// Spacing
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  2: 0.125rem,
+  4: 0.25rem,
+  8: 0.5rem,
+  12: 0.75rem,
+  16: 1rem,
+  24: 1.5rem,
+  32: 2rem,
+  40: 2.5rem,
+  48: 3rem,
+  56: 3.5rem,
+  64: 4rem
+);
+
+// Grid
+
+$grid-gutter-width: 1.5rem;
+$grid-row-columns: 12;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1164px
+);
+
+// Fonts
+
+$font-family-sans-serif: 'Roboto', sans-serif;
+$font-family-alternate: $font-family-sans-serif;
+$font-family-monospace: 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+
+$font-size-base: 1rem;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+$line-height-base: 1.5;
+$lead-font-size: ($font-size-base * 1.125);
+$lead-font-weight: $font-weight-normal;
+$small-font-size: 75%;
+$text-muted: $gray-500;
+
+$font-size-0: $font-size-base * 0.625;
+$font-size-1: $font-size-base * 0.75;
+$font-size-2: $font-size-base * 0.875;
+$font-size-3: $font-size-base;
+$font-size-4: $font-size-base * 1.125;
+$font-size-5: $font-size-base * 1.25;
+$font-size-6: $font-size-base * 1.5;
+
+$font-size-10: $font-size-base * 0.625;
+$font-size-12: $font-size-base * 0.75;
+$font-size-14: $font-size-base * 0.875;
+$font-size-16: $font-size-base;
+$font-size-18: $font-size-base * 1.125;
+$font-size-20: $font-size-base * 1.25;
+$font-size-24: $font-size-base * 1.5;
+
+$headings-font-family: $font-family-alternate;
+$headings-margin-bottom: 1rem;
+
+$h1-font-size: $font-size-base * 2.5; // 40px
+$h2-font-size: $font-size-base * 2; // 32px
+$h3-font-size: $font-size-base * 1.75; // 28px
+$h4-font-size: $font-size-base * 1.375; // 22px
+$h5-font-size: $font-size-base; // 16px
+$h6-font-size: $font-size-base * 0.75; // 12 px
+
+$headings-font-weight: $font-weight-bold;
+
+// Tables
+
+$table-cell-padding: 0.5rem;
+$table-cell-padding-x: 1rem;
+$table-cell-padding-y: 0.5rem;
+$table-cell-padding-sm: 0.25rem;
+$table-cell-padding-x-sm: 0.75rem;
+$table-cell-padding-y-sm: 0.25rem;
+$table-accent-bg: $gray-200;
+
+// Buttons + Forms
+
+$input-btn-padding-y: 0.5rem;
+$input-btn-padding-x: 0.75rem;
+$input-btn-font-size: $font-size-2;
+
+// Buttons
+
+$btn-focus-width: 0.125rem;
+
+// Forms
+
+$label-margin-bottom: 0.25rem;
+
+$input-color: $body-color;
+$input-border-color: $gray-500;
+$input-focus-border-color: $gray-600;
+$input-focus-box-shadow: none;
+$input-placeholder-color: $gray-500;
+
+$form-feedback-valid-color: $success;
+$form-feedback-invalid-color: $warning;
+
+$form-feedback-icon-valid-color: $form-feedback-valid-color;
+$form-feedback-icon-valid: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'><path fill='#{$form-feedback-icon-valid-color}' d='m18.168 3.5c-0.21328 0-0.42714 0.081421-0.58984 0.24414l-10.244 10.244-4.4102-4.4121c-0.32544-0.32543-0.85426-0.32543-1.1797 0-0.32544 0.32544-0.32544 0.85419 0 1.1797l5 5c0.32543 0.3254 0.85425 0.3254 1.1797 0l10.832-10.834c0.3254-0.32544 0.3254-0.85229 0-1.1777-0.1627-0.16272-0.37462-0.24414-0.58789-0.24414z'/></svg>");
+
+$form-feedback-icon-invalid-color: $form-feedback-invalid-color;
+$form-feedback-icon-invalid: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'><path fill='#{$form-feedback-icon-invalid-color}' d='m6.5508 0.83398c-0.22102-1e-8 -0.43356 0.08786-0.58984 0.24414l-4.8828 4.8828c-0.15628 0.15628-0.24414 0.36882-0.24414 0.58984v6.8984c0 0.221 0.08786 0.43354 0.24414 0.58984l4.8828 4.8828c0.15628 0.1563 0.36882 0.24414 0.58984 0.24414h6.8984c0.221 0 0.43364-0.087841 0.58984-0.24414l4.8828-4.8828c0.1563-0.1563 0.24414-0.36884 0.24414-0.58984v-6.8984c0-0.22102-0.087841-0.43356-0.24414-0.58984l-4.8828-4.8828c-0.1562-0.15628-0.36884-0.24414-0.58984-0.24414h-6.8984zm0.34375 1.666h6.2109l4.3945 4.3945v6.2109l-4.3945 4.3945h-6.2109l-4.3945-4.3945v-6.2109l4.3945-4.3945zm3.1055 3.334c-0.46024 0-0.83398 0.3718-0.83398 0.83203v3.334c0 0.46028 0.37374 0.83398 0.83398 0.83398 0.4602 0 0.83398-0.3737 0.83398-0.83398v-3.334c0-0.46023-0.37378-0.83203-0.83398-0.83203zm0 6.666c-0.46024 0-0.83398 0.37368-0.83398 0.83398 0 0.4602 0.37374 0.83203 0.83398 0.83203h0.007812c0.4603 0 0.83398-0.37183 0.83398-0.83203 0-0.4603-0.37368-0.83398-0.83398-0.83398h-0.007812z'/></svg>");
+
+$custom-control-cursor: pointer;
+
+$custom-control-indicator-bg-size: 100% 100%;
+
+$custom-checkbox-indicator-icon-checked: url("data:image/svg+xml,<svg width='16' height='16' version='1.1' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'><path fill='#{$white}' d='m13.139 4.862c0.2604 0.26035 0.2604 0.68246 0 0.94281l-6.6666 6.6666c-0.26035 0.2604-0.68246 0.2604-0.94281 0l-3-3c-0.26035-0.26035-0.26035-0.68246 0-0.94281s0.68246-0.26035 0.94281 0l2.5286 2.5286 6.1952-6.1952c0.2604-0.26035 0.6825-0.26035 0.9428 0z'/></svg>");
+$custom-radio-indicator-icon-checked: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='-4 -4 8 8'><circle r='3.5' fill='#fff'/><circle r='2.5' fill='#{$primary}'/></svg>");
+
+$custom-select-bg-size: 20px 20px;
+$custom-select-indicator-color: $body-color;
+$custom-select-indicator: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'><path fill='#{$custom-select-indicator-color}' d='m10 4.166c-0.15234 0-0.30369 0.059551-0.41992 0.17578l-3.5723 3.5703c-0.23245 0.23245-0.23245 0.60935 0 0.8418 0.23246 0.23246 0.60934 0.23246 0.8418 0l3.1504-3.1504 3.1504 3.1504c0.2325 0.23246 0.6094 0.23246 0.8418 0 0.2325-0.23245 0.2325-0.60935 0-0.8418l-3.5703-3.5703c-0.1162-0.11623-0.26954-0.17578-0.42188-0.17578zm-3.5723 6.668c-0.15234 0-0.30369 0.057578-0.41992 0.17383-0.23245 0.2324-0.23245 0.6094 0 0.8418l3.5723 3.5723c0.23246 0.2324 0.6094 0.2324 0.8418 0l3.5703-3.5723c0.2325-0.2324 0.2325-0.6094 0-0.8418-0.2324-0.2325-0.6094-0.2325-0.8418 0l-3.1504 3.1504-3.1504-3.1504c-0.11623-0.11625-0.26954-0.17383-0.42188-0.17383z'/></svg>");
+$custom-select-background: escape-svg($custom-select-indicator) no-repeat right $input-btn-padding-x center / $custom-select-bg-size;
+
+$custom-select-feedback-icon-position: center right 2.25rem;
+$custom-select-feedback-icon-size: auto;
+
+$custom-range-track-height: 0.125rem;
+$custom-range-track-bg: $gray-500;
+$custom-range-track-border-radius: $rounded-pill;
+$custom-range-track-box-shadow: none;
+$custom-range-thumb-width: 0.75rem;
+$custom-range-thumb-height: $custom-range-thumb-width;
+$custom-range-thumb-bg: $primary;
+$custom-range-thumb-border: none;
+$custom-range-thumb-border-radius: $rounded-pill;
+$custom-range-thumb-box-shadow: none;
+$custom-range-thumb-focus-box-shadow: none;
+$custom-range-thumb-focus-box-shadow-width: 0;
+$custom-range-thumb-active-bg: $primary;
+$custom-range-thumb-disabled-bg: $gray-300;
+
+// Cards
+
+$card-spacer-y: 1rem;
+$card-spacer-x: 1rem;
+$card-border-width: 0;
+$card-border-radius: 0;
+$card-cap-bg: null;
+
+$card-img-overlay-padding: 1rem;
+
+// Breadcrumbs
+
+$breadcrumb-font-size: $font-size-1;
+
+$breadcrumb-padding-y: 0;
+$breadcrumb-padding-x: 0;
+$breadcrumb-item-padding: 0.25rem;
+
+$breadcrumb-margin-bottom: 1.5rem;
+
+$breadcrumb-bg: transparent;
+$breadcrumb-divider-color: $gray-600;
+$breadcrumb-active-color: $gray-600;
+$breadcrumb-divider: quote('/');
+$breadcrumb-border-radius: null;
+
+// Pagination
+
+$pagination-padding-y: 0.25rem;
+$pagination-padding-x: 0.5rem;
+$pagination-padding-y-sm: 0;
+$pagination-padding-x-sm: 0.25rem;
+$pagination-padding-y-lg: 0.75rem;
+$pagination-padding-x-lg: 1.5rem;
+$pagination-line-height: 1;
+
+$pagination-color: $body-color;
+$pagination-bg: transparent;
+$pagination-border-width: 0;
+$pagination-border-color: transparent;
+
+$pagination-focus-box-shadow: none;
+$pagination-focus-outline: 0;
+
+$pagination-hover-color: lighten($body-color, 25%);
+$pagination-hover-bg: transparent;
+$pagination-hover-border-color: transparent;
+
+$pagination-active-color: $primary;
+$pagination-active-bg: transparent;
+$pagination-active-border-color: transparent;
+
+$pagination-disabled-color: $gray-500;
+$pagination-disabled-bg: transparent;
+$pagination-disabled-border-color: transparent;
+
+// Misc
+
+$embed-responsive-aspect-ratios: ((21 9), (16 9), (5 4), (4 3), (3 2), (1 1), (2 3), (3 4), (4 5));
+
+$sizes: (
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%,
+  auto: auto
+);
+
+$transition-collapse: height 0.2s ease-in-out;
+
+$border-radius: 0.3125rem;
+$border-radius-sm: 0.125rem;
+$border-radius-lg: 0.75rem;
+
+$box-shadow-sm: 0 0.125rem 0.25rem rgba($black, 0.08);
+$box-shadow: 0 0.5rem 1rem rgba($black, 0.12);
+$box-shadow-lg: 0 1rem 3rem rgba($black, 0.16);
