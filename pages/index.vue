@@ -1,8 +1,11 @@
 <template>
   <main>
-    <b-container>
+    <b-container class="mt-40">
+      <AddTodo @add-todo="addTodo" />
       <div class="row my-40">
         <b-col class="task-card border-right-0">
+          <!-- <AddTodo @add-todo="addTodo(todo, sat.items)" /> -->
+
           <h2>Saturday</h2>
           <draggable v-model="saturday" group="list" @start="drag = true" @end="drag = false">
             <li class="vertical-center" v-for="todo of sat.items" :key="todo.id">
@@ -54,13 +57,18 @@
 
 <script>
 import Draggable from 'vuedraggable'
+import AddTodo from '../components/AddTodo'
 
 export default {
   components: {
-    Draggable
+    Draggable,
+    AddTodo
   },
   data() {
     return {
+      saturday: null,
+      sunday: null,
+      otherDays: null,
       sat: {
         items: [
           { id: 1, title: 'Купить хлеб', completed: false },
@@ -87,6 +95,9 @@ export default {
   methods: {
     removeTodo(id, arr) {
       arr.items = arr.items.filter((t) => t.id !== id)
+    },
+    addTodo(todo) {
+      this.sat.items.push(todo)
     }
   }
 }
