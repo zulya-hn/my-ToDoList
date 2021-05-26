@@ -1,12 +1,11 @@
 <template>
   <main>
-    <b-container class="mt-40">
-      <AddTodo @add-todo="addTodo" />
-      <div class="row my-40">
+    <b-container>
+      <div class="row my-lg-40">
         <b-col class="task-card border-right-0">
-          <!-- <AddTodo @add-todo="addTodo(todo, sat.items)" /> -->
+          <h2 class="mt-24">Saturday</h2>
+          <AddTodo @add-todo="addTodo($event, sat)" class="my-24" />
 
-          <h2>Saturday</h2>
           <draggable v-model="saturday" group="list" @start="drag = true" @end="drag = false">
             <li class="vertical-center" v-for="todo of sat.items" :key="todo.id">
               <span>
@@ -20,7 +19,9 @@
           </draggable>
         </b-col>
         <b-col class="task-card">
-          <h2>Sunday</h2>
+          <h2 class="mt-24">Sunday</h2>
+          <AddTodo @add-todo="addTodo($event, sun)" class="my-24" />
+
           <draggable v-model="sunday" group="list" @start="drag = true" @end="drag = false">
             <li class="vertical-center" v-for="todo of sun.items" :key="todo.id">
               <span>
@@ -37,7 +38,9 @@
 
       <div class="row text-center">
         <b-col class="task-card">
-          <h2>Other days</h2>
+          <h2 class="mt-24">Other days</h2>
+          <AddTodo @add-todo="addTodo($event, other)" class="my-24" />
+
           <draggable v-model="otherDays" group="list" @start="drag = true" @end="drag = false">
             <li class="vertical-center" v-for="todo of other.items" :key="todo.id">
               <span>
@@ -96,8 +99,9 @@ export default {
     removeTodo(id, arr) {
       arr.items = arr.items.filter((t) => t.id !== id)
     },
-    addTodo(todo) {
-      this.sat.items.push(todo)
+    addTodo(todo, arr) {
+      console.log(todo)
+      arr.items.push(todo)
     }
   }
 }
