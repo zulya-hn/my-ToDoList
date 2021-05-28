@@ -7,6 +7,9 @@
 
 <script>
 export default {
+  props: {
+    day: String
+  },
   data() {
     return {
       title: ''
@@ -14,12 +17,13 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log('Submit', this.title)
+      // console.log('Submit', this.title)
       if (this.title.trim()) {
         const newTodo = {
           id: Date.now(),
           title: this.title,
-          completed: false
+          completed: false,
+          day: this.day
         }
 
         this.$emit('add-todo', newTodo)

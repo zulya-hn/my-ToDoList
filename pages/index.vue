@@ -3,14 +3,13 @@
     <b-container>
       <div class="row my-lg-40">
         <b-col class="task-card border-right-0">
-          <h2 class="mt-24">Saturday</h2>
-          <AddTodo @add-todo="addTodo($event, sat)" class="my-24" />
+          <h2 class="mt-24 text-center">Saturday</h2>
+          <AddTodo @add-todo="addTodo($event, sat)" class="my-24" :day="'sat'" />
 
           <draggable v-model="saturday" group="list" @start="drag = true" @end="drag = false">
             <li class="vertical-center" v-for="todo of sat.items" :key="todo.id">
               <span>
-                <input type="checkbox" v-on:change="todo.completed = !todo.completed" :id="todo.id + todo.title" />
-                <label :for="todo.id + todo.title" :class="{ done: todo.completed }">
+                <label :for="todo.id + todo.title" :class="{ done: todo.completed }" @click="changeTodoState(todo)">
                   {{ todo.title }}
                 </label>
               </span>
@@ -19,14 +18,13 @@
           </draggable>
         </b-col>
         <b-col class="task-card">
-          <h2 class="mt-24">Sunday</h2>
-          <AddTodo @add-todo="addTodo($event, sun)" class="my-24" />
+          <h2 class="mt-24 text-center">Sunday</h2>
+          <AddTodo @add-todo="addTodo($event, sun)" class="my-24" :day="'sun'" />
 
           <draggable v-model="sunday" group="list" @start="drag = true" @end="drag = false">
             <li class="vertical-center" v-for="todo of sun.items" :key="todo.id">
               <span>
-                <input type="checkbox" v-on:change="todo.completed = !todo.completed" :id="todo.id + todo.title" />
-                <label :for="todo.id + todo.title" :class="{ done: todo.completed }">
+                <label :for="todo.id + todo.title" :class="{ done: todo.completed }" @click="changeTodoState(todo)">
                   {{ todo.title }}
                 </label>
               </span>
@@ -38,14 +36,13 @@
 
       <div class="row text-center">
         <b-col class="task-card">
-          <h2 class="mt-24">Other days</h2>
-          <AddTodo @add-todo="addTodo($event, other)" class="my-24" />
+          <h2 class="mt-24 text-center">Other days</h2>
+          <AddTodo @add-todo="addTodo($event, other)" class="my-24" :day="'other'" />
 
           <draggable v-model="otherDays" group="list" @start="drag = true" @end="drag = false">
             <li class="vertical-center" v-for="todo of other.items" :key="todo.id">
               <span>
-                <input type="checkbox" v-on:change="todo.completed = !todo.completed" :id="todo.id + todo.title" />
-                <label :for="todo.id + todo.title" :class="{ done: todo.completed }">
+                <label :for="todo.id + todo.title" :class="{ done: todo.completed }" @click="changeTodoState(todo)">
                   {{ todo.title }}
                 </label>
               </span>
@@ -73,35 +70,46 @@ export default {
       sunday: null,
       otherDays: null,
       sat: {
-        items: [
-          { id: 1, title: 'Купить хлеб', completed: false },
-          { id: 2, title: 'Купить масло', completed: false },
-          { id: 3, title: 'Купить молоко', completed: false }
-        ]
+        items: [{ id: 1, title: 'Купить хлеб', completed: false }]
       },
       sun: {
-        items: [
-          { id: 1, title: 'Купить колбасу', completed: false },
-          { id: 2, title: 'Купить коробку', completed: false },
-          { id: 3, title: 'Купить заколку', completed: false }
-        ]
+        items: [{ id: 1, title: 'Купить колбасу', completed: false }]
       },
       other: {
-        items: [
-          { id: 1, title: 'Купить мороженое', completed: false },
-          { id: 2, title: 'Купить лампочку', completed: false },
-          { id: 3, title: 'Купить ризотто', completed: false }
-        ]
+        items: [{ id: 1, title: 'Купить мороженое', completed: false }]
       }
     }
+  },
+  mounted() {
+    this.getTodosFromStorage()
   },
   methods: {
     removeTodo(id, arr) {
       arr.items = arr.items.filter((t) => t.id !== id)
+      localStorage.removeItem(id)
     },
     addTodo(todo, arr) {
-      console.log(todo)
       arr.items.push(todo)
+      const parsed = JSON.stringify(todo)
+      localStorage.setItem(todo.id, parsed)
+    },
+    getTodosFromStorage() {
+      const keys = Object.keys(localStorage)
+
+      for (const key of keys) {
+        localStorage.getItem(key)
+        const todoFromStorage = localStorage.getItem(key)
+
+        try {
+          const parsedFromStorage = JSON.parse(todoFromStorage)
+          this.sat.items.push(parsedFromStorage)
+        } catch (error) {}
+      }
+    },
+    changeTodoState(todo) {
+      todo.completed = !todo.completed
+      const parsed = JSON.stringify(todo)
+      localStorage.setItem(todo.id, parsed)
     }
   }
 }
