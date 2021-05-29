@@ -22,7 +22,7 @@
           <AddTodo @add-todo="addTodo($event, sun)" class="my-24" :day="'sun'" />
 
           <draggable v-model="sunday" group="list" @start="drag = true" @end="drag = false">
-            <li class="vertical-center" v-for="todo of sun.items" :key="todo.id">
+            <li class="vertical-center" v-for="todo of suns" :key="todo.id">
               <span>
                 <label :for="todo.id + todo.title" :class="{ done: todo.completed }" @click="changeTodoState(todo)">
                   {{ todo.title }}
@@ -40,7 +40,7 @@
           <AddTodo @add-todo="addTodo($event, other)" class="my-24" :day="'other'" />
 
           <draggable v-model="otherDays" group="list" @start="drag = true" @end="drag = false">
-            <li class="vertical-center" v-for="todo of other.items" :key="todo.id">
+            <li class="vertical-center" v-for="todo of others" :key="todo.id">
               <span>
                 <label :for="todo.id + todo.title" :class="{ done: todo.completed }" @click="changeTodoState(todo)">
                   {{ todo.title }}
@@ -86,7 +86,13 @@ export default {
   },
   computed: {
     sats() {
-      return this.sat.items.slice().sort((a, b) => a.completed > b.completed)
+      return this.sat.items.slice().sort((a, b) => a.id < b.id || a.completed > b.completed)
+    },
+    suns() {
+      return this.sun.items.slice().sort((a, b) => a.id < b.id || a.completed > b.completed)
+    },
+    others() {
+      return this.other.items.slice().sort((a, b) => a.id < b.id || a.completed > b.completed)
     }
   },
   methods: {
