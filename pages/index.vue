@@ -7,7 +7,7 @@
           <AddTodo @add-todo="addTodo($event, sat)" class="my-24" :day="'sat'" />
 
           <draggable v-model="saturday" group="list" @start="drag = true" @end="drag = false">
-            <li class="vertical-center" v-for="todo of sat.items" :key="todo.id">
+            <li class="vertical-center" v-for="todo of sats" :key="todo.id">
               <span>
                 <label :for="todo.id + todo.title" :class="{ done: todo.completed }" @click="changeTodoState(todo)">
                   {{ todo.title }}
@@ -69,19 +69,25 @@ export default {
       saturday: null,
       sunday: null,
       otherDays: null,
+      dayFromStorage: null,
       sat: {
-        items: [{ id: 1, title: 'Купить хлеб', completed: false }]
+        items: []
       },
       sun: {
-        items: [{ id: 1, title: 'Купить колбасу', completed: false }]
+        items: []
       },
       other: {
-        items: [{ id: 1, title: 'Купить мороженое', completed: false }]
+        items: []
       }
     }
   },
   mounted() {
     this.getTodosFromStorage()
+  },
+  computed: {
+    sats() {
+      return this.sat.items.slice().sort((a, b) => a.completed > b.completed)
+    }
   },
   methods: {
     removeTodo(id, arr) {
@@ -102,7 +108,9 @@ export default {
 
         try {
           const parsedFromStorage = JSON.parse(todoFromStorage)
-          this.sat.items.push(parsedFromStorage)
+          const dayFromStorage = parsedFromStorage.day
+
+          this[dayFromStorage].items.push(parsedFromStorage)
         } catch (error) {}
       }
     },
