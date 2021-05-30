@@ -6,7 +6,7 @@
           <h2 class="mt-24 text-center">Saturday</h2>
           <AddTodo @add-todo="addTodo($event, sat)" class="my-24" :day="'sat'" />
 
-          <draggable v-model="saturday" group="list" @start="drag = true" @end="drag = false">
+          <draggable v-model="sats" group="list" @start="drag = true" @end="drag = false" @change="changeElementPosition($event, 'sat')">
             <li class="vertical-center" v-for="todo of sats" :key="todo.id">
               <span>
                 <label :for="todo.id + todo.title" :class="{ done: todo.completed }" @click="changeTodoState(todo)">
@@ -21,7 +21,7 @@
           <h2 class="mt-24 text-center">Sunday</h2>
           <AddTodo @add-todo="addTodo($event, sun)" class="my-24" :day="'sun'" />
 
-          <draggable v-model="sunday" group="list" @start="drag = true" @end="drag = false">
+          <draggable v-model="suns" group="list" @start="drag = true" @end="drag = false" @change="changeElementPosition($event, 'sun')">
             <li class="vertical-center" v-for="todo of suns" :key="todo.id">
               <span>
                 <label :for="todo.id + todo.title" :class="{ done: todo.completed }" @click="changeTodoState(todo)">
@@ -39,7 +39,13 @@
           <h2 class="mt-24 text-center">Other days</h2>
           <AddTodo @add-todo="addTodo($event, other)" class="my-24" :day="'other'" />
 
-          <draggable v-model="otherDays" group="list" @start="drag = true" @end="drag = false">
+          <draggable
+            v-model="others"
+            group="list"
+            @start="drag = true"
+            @end="drag = false"
+            @change="changeElementPosition($event, 'other')"
+          >
             <li class="vertical-center" v-for="todo of others" :key="todo.id">
               <span>
                 <label :for="todo.id + todo.title" :class="{ done: todo.completed }" @click="changeTodoState(todo)">
@@ -66,10 +72,6 @@ export default {
   },
   data() {
     return {
-      saturday: null,
-      sunday: null,
-      otherDays: null,
-      dayFromStorage: null,
       sat: {
         items: []
       },
@@ -85,17 +87,40 @@ export default {
     this.getTodosFromStorage()
   },
   computed: {
-    sats() {
-      return this.sat.items.slice().sort((a, b) => a.id < b.id || a.completed > b.completed)
+    sats: {
+      get() {
+        return this.sat.items.slice().sort((a, b) => a.id < b.id || a.completed > b.completed)
+      },
+      set(value) {
+        this.sat.items = value
+      }
     },
-    suns() {
-      return this.sun.items.slice().sort((a, b) => a.id < b.id || a.completed > b.completed)
+    suns: {
+      get() {
+        return this.sun.items.slice().sort((a, b) => a.id < b.id || a.completed > b.completed)
+      },
+      set(value) {
+        this.sun.items = value
+      }
     },
-    others() {
-      return this.other.items.slice().sort((a, b) => a.id < b.id || a.completed > b.completed)
+    others: {
+      get() {
+        return this.other.items.slice().sort((a, b) => a.id < b.id || a.completed > b.completed)
+      },
+      set(value) {
+        this.other.items = value
+      }
     }
   },
   methods: {
+    changeElementPosition(event, day) {
+      if (event.added !== undefined) {
+        event.added.element.day = day
+        const element = event.added.element
+        const parsedChange = JSON.stringify(element)
+        localStorage.setItem(element.id, parsedChange)
+      }
+    },
     removeTodo(id, arr) {
       arr.items = arr.items.filter((t) => t.id !== id)
       localStorage.removeItem(id)
